@@ -43,17 +43,19 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
 
-    <main role="main">
-      <%= yield %>
-      
+    <main role="main" class="container pt-5">
+      <br />
+      <% if (notice) %>
+        <p class="alert alert-info"><%= notice %></p> 
+      <% end %>
+      <% if (notice) %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
+      <%= yield %>
     </main>
 
     <footer class="container">

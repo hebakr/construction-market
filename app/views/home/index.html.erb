@@ -1,9 +1,11 @@
+<div class="row">
 
-            <ul>
-               
-        <% for item in @categories %>
-            <li><%= item.name %></li>
-          
-        <% end %>
+    <% for item in @categories %>
+    <div class="col-md-4 mb-2">
+        <a href="#" class="btn btn-info btn-block">
+            <%= item.name %>
+        </a>
+    </div>
+    <% end %>
 
-            </ul>
+</div>

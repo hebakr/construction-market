@@ -1,0 +1,16 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.product-details {
+  .jumbotron {
+    h1 {
+      font-size: 5em;
+      font-weight: 600;
+
+      sub {
+        font-size: 0.25em;
+        font-weight: 300;
+      }
+    }
+  }
+}

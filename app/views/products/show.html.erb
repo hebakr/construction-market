@@ -1,0 +1,164 @@
+
+<h2>
+      <%= @product.name %>
+</h2>
+<hr>
+<div class="row product-details">
+  <div class="col-3">
+    <div class="jumbotron text-center">
+      <h1 class="display-4">200<sub>L.E</sub></h1>
+      <p class="lead">Average price.</p>
+      
+    </div>
+
+    <div>
+    <h4>Specifications</h4>
+    <table class="table table-striped" >
+      <tr>
+        <td>Specs 1</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Specs 2</td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>Specs 3</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>Specs 4</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>Specs 5</td>
+        <td>16</td>
+      </tr>
+    </table>
+    </div>
+
+  </div>
+  <div class="col-7">
+  
+  	<div>
+		  <canvas id="chart1"></canvas>
+    </div>
+    <hr>
+
+    <h4>Description</h4>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
+    </p>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="gallery-tab" data-toggle="tab" href="#gallery" role="tab" aria-controls="gallery" aria-selected="true">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="offers" aria-selected="false">Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="compare-tab" data-toggle="tab" href="#compare" role="tab" aria-controls="compare" aria-selected="false">Compare</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+        <div class="row">
+          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=1" class="img-fluid" alt=""></div>
+          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=2" class="img-fluid" alt=""></div>
+          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=3" class="img-fluid" alt=""></div>
+          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=4" class="img-fluid" alt=""></div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
+        <h3>Offers to be defined!</h3>
+      </div>
+      <div class="tab-pane fade" id="compare" role="tabpanel" aria-labelledby="compare-tab">
+        <h3>Compare to be defined!</h3>
+      </div>
+    </div>  
+  </div>
+  <div class="col-2">
+    <h4>Providers</h4>
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action">Provider 1</a>
+      <a href="#" class="list-group-item list-group-item-action">Provider 2</a>
+      <a href="#" class="list-group-item list-group-item-action">Provider 3</a>
+      <a href="#" class="list-group-item list-group-item-action">Provider 4</a>
+      <a href="#" class="list-group-item list-group-item-action">Provider 5</a>
+    </div>
+  </div>
+</div>
+
+<script>
+		function randomNumber(min, max) {
+			return Math.random() * (max - min) + min;
+		}
+
+		function randomBar(date, lastClose) {
+			var open = randomNumber(lastClose * 0.95, lastClose * 1.05);
+			var close = randomNumber(open * 0.95, open * 1.05);
+			return {
+				t: date.valueOf(),
+				y: close
+			};
+		}
+
+		var dateFormat = 'MMMM DD YYYY';
+		var date = moment('April 01 2017', dateFormat);
+		var data = [randomBar(date, 30)];
+		var labels = [date];
+		while (data.length < 20) {
+			date = date.clone().add(1, 'd');
+			if (date.isoWeekday() <= 5) {
+				data.push(randomBar(date, data[data.length - 1].y));
+				labels.push(date);
+			}
+		}
+
+		var ctx = document.getElementById('chart1').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 500;
+
+		var color = Chart.helpers.color;
+		var cfg = {
+			type: 'bar',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: 'CHRT - Chart.js Corporation',
+					backgroundColor: color('red').alpha(0.5).rgbString(),
+					borderColor: 'red',
+					data: data,
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						ticks: {
+							source: 'labels'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Closing price ($)'
+						}
+					}]
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+
+	
+
+	</script>

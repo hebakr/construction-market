@@ -1,0 +1,8 @@
+<div class="row">
+
+    <% for item in @categories %>
+    <div class="col-md-4 mb-2">
+    <%= link_to item.name, catalog_path(item), :class => "btn btn-info btn-block" %>
+    </div>
+    <% end %>
+</div>

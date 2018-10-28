@@ -3,10 +3,10 @@
 # catalog controller
 class CatalogController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.root
   end
 
   def show
-    @category = Category.includes(:products).find(params[:id])
+    @category = Category.includes(:brands).find(params[:id])
   end
 end

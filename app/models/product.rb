@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :category
+  belongs_to :brand
   has_many :photos
   has_many :attachements
   has_many :spec_values

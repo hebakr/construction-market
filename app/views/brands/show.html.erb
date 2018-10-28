@@ -1,0 +1,41 @@
+<div id="carouselExampleSlidesOnly" class="carousel slide catalog" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://loremflickr.com/800/400" alt="<%= @brand.name %>">
+
+      <div class="carousel-caption d-none d-md-block">
+        <h3><%= @brand.name %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @brand.products.any? %>
+  <table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Average Price</th>
+    <th>Model Code</th>
+    <th>Years</th>
+  </tr>
+  <% @brand.products.each do |product| %>
+  <tr>
+    <td>
+      <%= link_to product.name, catalog_brand_product_path(params[:catalog_id], @brand, product) %>
+    </td>
+    <td>100 L.E</td>
+    <td>0012356</td>
+    <td>2017/2018</td>
+  </tr>
+  <% end %>
+</table>
+<% else %>
+<div class="alert">
+  No products found in this category!
+</div>
+
+<% end %>
+
+
+
+

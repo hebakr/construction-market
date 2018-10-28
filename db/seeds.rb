@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+Category.delete_all
+
 Category.create(name: 'Covering Skin', view_order: 1)
 Category.create(name: 'Accessories', view_order: 2)
 Category.create(name: 'Sanitary Ware', view_order: 3)
@@ -12,13 +16,26 @@ Category.create(name: 'Doors & Windows', view_order: 11)
 Category.create(name: 'Glass', view_order: 12)
 
 Category.all.each do |cat|
-  for i in 1..10
-    cat.products.create(name: Faker::Commerce.product_name,
-                        discription: Faker::Lorem.sentence
-                        )
+  (1..10).each do |_i|
+    brand = cat.brands.new
+
+    brand.name = Faker::Commerce.product_name
+    # brand.products = []
+    # (1..10).each do |_j|
+    #   brand.products << { name: Faker::Commerce.product_name, discription: Faker::Lorem.sentence }
+    # end
+
+    brand.save!
   end
 end
-for i in 1..10
+
+Brand.all.each do |brand|
+  (1..10).each do |_j|
+    brand.products.create(name: Faker::Commerce.product_name, discription: Faker::Lorem.sentence)
+  end
+end
+
+(1..10).each do |_i|
   Company.create(
     name: Faker::Company.name,
     address: Faker::Address.full_address,

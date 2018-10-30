@@ -8,4 +8,10 @@ Rails.application.routes.draw do
       resources :products
     end
   end
+
+  scope :dashboard do
+    root 'dashboard#index'
+  end
+
+  get 'dashboard(*x)' => 'dashboard#index'
 end

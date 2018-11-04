@@ -32,48 +32,17 @@ class Layout extends Component {
 
                         </Menu.Item>
 
-                        <Dropdown item simple text='Dropdown'>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>List Item</Dropdown.Item>
-                                <Dropdown.Item>List Item</Dropdown.Item>
-                                <Dropdown.Divider />
-                                <Dropdown.Header>Header Item</Dropdown.Header>
-                                <Dropdown.Item>
-                                    <i className='dropdown icon' />
-                                    <span className='text'>Submenu</span>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item>List Item</Dropdown.Item>
-                                        <Dropdown.Item>List Item</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown.Item>
-                                <Dropdown.Item>List Item</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
                     </Container>
                 </Menu>
 
-                <Container text style={{ marginTop: '7em' }}>
+                <div style={{ marginTop: '7em' }}>
                     <Route path="/" exact component={Home} />
                     <Route path="/catalog" exact component={Catalog} />
-                </Container>
+                </div>
 
                 <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
                     <Container textAlign='center'>
 
-                        <List horizontal inverted divided link>
-                            <List.Item as='a' href='#'>
-                                Site Map
-                            </List.Item>
-                            <List.Item as='a' href='#'>
-                                Contact Us
-                            </List.Item>
-                            <List.Item as='a' href='#'>
-                                Terms and Conditions
-                            </List.Item>
-                            <List.Item as='a' href='#'>
-                                Privacy Policy
-                            </List.Item>
-                        </List>
                     </Container>
                 </Segment>
             </div>

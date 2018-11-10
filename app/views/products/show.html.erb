@@ -6,7 +6,7 @@
 <div class="row product-details">
   <div class="col-3">
     <div class="jumbotron text-center">
-      <h1 class="display-4">200<sub>L.E</sub></h1>
+      <h1 class="display-4"><%= @product.prices.last.price %><sub>L.E</sub></h1>
       <p class="lead">Average price.</p>
       
     </div>
@@ -14,26 +14,14 @@
     <div>
     <h4>Specifications</h4>
     <table class="table table-striped" >
+
+      <% @product.spec_values.each do |val|  %>
       <tr>
-        <td>Specs 1</td>
-        <td>10</td>
+        <td><%= val.spec_item.name %></td>
+        <td><%= val.value %></td>
       </tr>
-      <tr>
-        <td>Specs 2</td>
-        <td>13</td>
-      </tr>
-      <tr>
-        <td>Specs 3</td>
-        <td>14</td>
-      </tr>
-      <tr>
-        <td>Specs 4</td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>Specs 5</td>
-        <td>16</td>
-      </tr>
+      <% end %>
+
     </table>
     </div>
 
@@ -47,9 +35,7 @@
 
     <h4>Description</h4>
     <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis ullam accusamus ipsa quae a dolorem expedita voluptatum quo repellat facilis?
+      <%= @product.discription %>
     </p>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -66,10 +52,9 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
         <div class="row">
-          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=1" class="img-fluid" alt=""></div>
-          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=2" class="img-fluid" alt=""></div>
-          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=3" class="img-fluid" alt=""></div>
-          <div class="col-6 mb-2"><img src="https://loremflickr.com/400/400?random=4" class="img-fluid" alt=""></div>
+          <% @product.photos.each  do |photo|  %>
+          <div class="col-6 mb-2"><img src="<%= photo.file %>>" class="img-fluid" alt=""></div>
+            <% end %>
         </div>
       </div>
       <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
@@ -82,13 +67,14 @@
   </div>
   <div class="col-2">
     <h4>Providers</h4>
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action">Provider 1</a>
-      <a href="#" class="list-group-item list-group-item-action">Provider 2</a>
-      <a href="#" class="list-group-item list-group-item-action">Provider 3</a>
-      <a href="#" class="list-group-item list-group-item-action">Provider 4</a>
-      <a href="#" class="list-group-item list-group-item-action">Provider 5</a>
-    </div>
+    <ul class="list-unstyled">
+      <% @product.companies.each  do |provider|  %>
+        <li>
+          <%= icon('far', 'arrow-alt-circle-right') %>
+          <a href="#"><%= provider.name %></a>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

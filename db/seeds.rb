@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # # frozen_string_literal: true
 #
 # Category.delete_all
@@ -44,12 +46,56 @@
 #     email: Faker::Internet.email
 #   )
 # end
-#
-Product.includes(:brand).all.each do |product|
-  spec_items = SpecItem.find_by_category_id(product.brand.category_id)
-  next if spec_items.present? do
-    spec_items.each do |item|
-      product.spec_values.create(spec_item_id: item.id, value: Faker::Number.rand(100))
+# #
+# Product.includes(:brand).all.each do |product|
+#   spec_items = SpecItem.find_by_category_id(product.brand.category_id)
+#   puts spec_items
+#   if spec_items.present? do
+#     spec_items.each do |item|
+#       product.spec_values.create(spec_item_id: item.id, value: Faker::Number.rand(100))
+#     end
+#   end
+#   end
+# end
+
+SpecValue.delete_all
+SpecItem.delete_all
+
+
+
+Category.all.each do |category|
+  (1..7).each do |_i|
+    category.spec_items.create(name: Faker::Lorem.word)
+  end
+  category.spec_items
+  puts category.name
+  category.brands.each do |brand|
+    puts "--Brand: #{brand.name}"
+
+    brand.products.each do |p|
+      puts "-----Product: #{p.name}"
+      category.spec_items.each do |item|
+        puts "------Spec Item: #{item.name}"
+        SpecValue.create(value: Faker::Number.rand(100), product_id: p.id, spec_item_id: item.id)
+      end
     end
+
+  end
+end
+
+Photo.delete_all
+Product.all.each do |p|
+  (1..4).each do |_i|
+    p.photos.create(file: "http://loremflickr.com/400/400?random=#{_i}")
+  end
+end
+Product.all.each do |p|
+  p.companies.delete_all
+  (1..4).each do |_i|
+    offset = rand(Company.count)
+    rand_company = Company.offset(offset).first
+    p.companies << rand_company if rand_company.present?
+
+    p.save!
   end
 end

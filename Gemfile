@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'webpacker', '~> 3.5'
+gem 'font-awesome-sass', '~> 5.5.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'bootstrap', '~> 4.1.3'

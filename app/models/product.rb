@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :attachements
   has_many :spec_values
   has_many :prices
+  has_many :offers
+
   has_and_belongs_to_many :companies
 
   def similar

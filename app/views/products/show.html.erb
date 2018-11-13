@@ -61,7 +61,26 @@
         <h3>Offers to be defined!</h3>
       </div>
       <div class="tab-pane fade" id="compare" role="tabpanel" aria-labelledby="compare-tab">
-        <h3>Compare to be defined!</h3>
+        <% @product.similar.each do |product|  %>
+          <div>
+            ,
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal"><%= product.name %></h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><%= product.current_price %> L.E</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <% product.spec_values.each do |item| %>
+                    <li>
+                      <%= item.spec_item.name %>, <%= item.value %>
+                    </li>
+                <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>  
   </div>

@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   has_many :spec_values
   has_many :prices
   has_many :offers
-  has_many :distributers, through: :offers
 
   has_and_belongs_to_many :companies
 

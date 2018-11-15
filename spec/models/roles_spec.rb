@@ -1,10 +1,11 @@
+require 'rails_helper'
 
-RSpec.describe Product, :type => :model do
+RSpec.describe Role, :type => :model do
 
   it 'validate presence of name' do
-    role = Product.new
-    role.name = 'Admin'
+    role = Role.new
+    role.name = ''
     role.save
-    expect(role).to be_valid
+    expect(role).to be_invalid
   end
 end

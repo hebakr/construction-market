@@ -15,4 +15,4 @@
 #
 # Seeder.seed_prices
 
-Seeder.seed_offers
+Seeder.seed_all

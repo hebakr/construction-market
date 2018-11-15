@@ -92,18 +92,13 @@ module Seeder
       (1..5).each do |_i|
         category.spec_items.create(name: Faker::Lorem.word)
       end
-        puts category.name
-        category.brands.each do |brand|
-          puts "--Brand: #{brand.name}"
-
-          brand.products.each do |p|
-            puts "-----Product: #{p.name}"
-            category.spec_items.each do |item|
-              puts "------Spec Item: #{item.name}"
-              SpecValue.create(value: Faker::Number.rand(100), product_id: p.id, spec_item_id: item.id)
-            end
+      category.brands.each do |brand|
+        brand.products.each do |p|
+          category.spec_items.each do |item|
+            SpecValue.create(value: Faker::Number.rand(100), product_id: p.id, spec_item_id: item.id)
           end
         end
+      end
     end
   end
 

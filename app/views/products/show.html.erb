@@ -104,6 +104,14 @@
         </li>
       <% end %>
     </ul>
+    <hr />
+    <%= form_tag(catalog_brand_products_path) do %>
+      <%= hidden_field_tag 'catalog_id', params[:catalog_id] %>
+      <%= hidden_field_tag 'blog_id', params[:blog_id] %>
+      <%= hidden_field_tag 'product_id', @product.id %>
+      <div><%= submit_tag 'Add to Quotation Request', :class => 'btn btn-primary' %></div>
+    <% end %>
+
   </div>
 </div>
 

@@ -1,0 +1,48 @@
+<h2>
+  Quotation request
+</h2>
+<%= form_tag('/user/update_request') do %>
+<table class="table">
+  <tr>
+    <th>#</th>
+    <th>Product name</th>
+    <th style="width: 150px;">Qty.</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @items.each_with_index do |item, _i| %>
+  <tr>
+    <td><%= _i+1 %></td>
+    <td> <%= item.product.name %></td>
+    <td>
+
+      <%= number_field_tag("qty[#{item.id}]",  item.quantity, :class => 'form-control') %></td>
+    <td>
+
+    <%= text_area_tag("notes[#{item.id}]",  item.notes, :class => 'form-control', placeholder: 'Write some notes to the distributor') %></td>
+    <td>
+      <%= hidden_field_tag("ids[]",  item.id) %>
+      <button class="btn btn-danger btn-sm">
+        <i class="fa fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+  <% end %>
+  <tfoot>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-save"></i>
+        Save Request
+      </button>
+    </td>
+    <td></td>
+  </tr>
+  </tfoot>
+</table>
+
+<% end %>
+

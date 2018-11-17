@@ -5,8 +5,6 @@ class HomeController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-    cat = Category.first
-  end
+
 end
 

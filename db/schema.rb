@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_190249) do
+ActiveRecord::Schema.define(version: 2018_11_17_171444) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
@@ -98,6 +98,17 @@ ActiveRecord::Schema.define(version: 2018_11_15_190249) do
     t.datetime "updated_at", null: false
     t.integer "brand_id"
     t.decimal "current_price"
+  end
+
+  create_table "quotation_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 1
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_quotation_items_on_product_id"
+    t.index ["user_id"], name: "index_quotation_items_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

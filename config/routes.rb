@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'secured/index'
+
+  get 'user/quotation' => 'catalog#quotation_request'
+  post 'user/update_request' => 'catalog#update_request'
+
   devise_for :users
   root 'catalog#index'
 

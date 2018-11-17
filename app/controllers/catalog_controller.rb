@@ -27,5 +27,8 @@ class CatalogController < ApplicationController
 
 
     end
+
+    flash[:notice] = 'Your quotation request has been updated successfully'
+    redirect_to('/user/quotation')
   end
 end

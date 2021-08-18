@@ -13,3 +13,10 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+  spec: 
+    docker:
+      - image: circleci/ruby:2.5.1-stretch-node
+    executor: ruby/default
+    steps:
+      - ruby/rspec-test
+

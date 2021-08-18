@@ -32,6 +32,7 @@ before_script:
   # - apt-get update -q && apt-get install nodejs -yqq
   - bundle config set path 'vendor' # Install dependencies into ./vendor/ruby
   - bundle install -j $(nproc)
+  - gem install bundler:1.16.2
 
 # Optional - Delete if not using `rubocop`
 rubocop:
